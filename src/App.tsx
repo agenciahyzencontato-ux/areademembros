@@ -305,7 +305,7 @@ const Certificate = ({ userName, completionDate }: { userName: string, completio
   const currentDate = new Date().toLocaleDateString('pt-BR');
 
   return (
-    <div className="w-full max-w-5xl p-4 no-print">
+    <div className="w-full max-w-5xl p-4">
       <div
         id="printable-certificate"
         className="relative w-full aspect-[1.414/1] bg-white shadow-2xl overflow-hidden rounded-lg"
@@ -342,7 +342,7 @@ const Certificate = ({ userName, completionDate }: { userName: string, completio
         </div>
       </div>
 
-      <div className="mt-12 flex justify-center">
+      <div className="mt-12 flex justify-start no-print">
         <button
           onClick={() => window.print()}
           className="btn-primary px-8 sm:px-12 py-4 sm:py-5 text-sm sm:text-base md:text-xl shadow-2xl hover:scale-105 transition-all"
@@ -826,7 +826,7 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex justify-center"
+              className="flex justify-start"
             >
               <Certificate userName={user.name} completionDate={completionDate || new Date().toLocaleDateString('pt-BR')} />
             </motion.div>
