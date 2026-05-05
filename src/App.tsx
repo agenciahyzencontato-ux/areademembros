@@ -22,13 +22,15 @@ import {
   Download,
   Printer,
   X,
-  Menu
+  Menu,
+  ShoppingBag,
+  PlusCircle
 } from "lucide-react";
 import certBg from './certificado.png';
 import profilePhoto from './favicon.png';
 import { cn } from "@/src/lib/utils";
 import { Dynamic, User, CourseProgress } from "./types";
-import { MOCK_DYNAMICS, MOCK_BONUSES, APP_NAME } from "./constants";
+import { APP_NAME } from "./constants";
 import confetti from "canvas-confetti";
 import { supabase } from "./supabaseClient";
 
@@ -389,7 +391,7 @@ const Certificate = ({ userName, completionDate }: { userName: string, completio
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'dynamics' | 'certificate' | 'bonus'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'dynamics' | 'certificate' | 'bonus' | 'adicionais'>('dashboard');
   const [dynamics, setDynamics] = useState<Dynamic[]>([]);
   const [loading, setLoading] = useState(true);
   const [completionDate, setCompletionDate] = useState<string>("");
@@ -641,6 +643,12 @@ export default function App() {
             active={activeTab === 'bonus'}
             onClick={() => { setActiveTab('bonus'); setIsSidebarOpen(false); }}
           />
+          <NavItem
+            icon={ShoppingBag}
+            label="Adicionais"
+            active={activeTab === 'adicionais'}
+            onClick={() => { setActiveTab('adicionais'); setIsSidebarOpen(false); }}
+          />
         </nav>
 
         <div className="p-6">
@@ -849,6 +857,141 @@ export default function App() {
                     />
                   </div>
                 ))}
+              </div>
+            </motion.div>
+          )}
+
+          {activeTab === 'adicionais' && (
+            <motion.div
+              key="adicionais"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <SectionTitle icon={ShoppingBag}>Adicionais & Upgrades</SectionTitle>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="glass-card overflow-hidden group border-2 border-transparent hover:border-rosa-primary/30 transition-all flex flex-col md:flex-row">
+                  <div className="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                    <img 
+                      src="https://i.ibb.co/0Vp0zXFS/519f4d94-cd0b-4502-9c52-da1dad565f7c-1777954675236.avif" 
+                      alt="+300 Dinâmicas Interativas Para Balé" 
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 md:w-2/3 flex flex-col">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-xl font-bold text-gray-800 leading-tight">+300 Dinâmicas Interativas Para Balé</h4>
+                      <span className="bg-rosa-primary text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shrink-0 ml-2">Oferta</span>
+                    </div>
+                    <p className="text-gray-500 text-sm mb-6 flex-1">O complemento perfeito para suas aulas de balé, com centenas de atividades lúdicas e técnicas.</p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <div>
+                        <p className="text-[10px] text-gray-400 font-bold uppercase">Aproveite agora</p>
+                        <p className="text-2xl font-black text-rosa-primary leading-none">Oferta Especial</p>
+                      </div>
+                      <a 
+                        href="https://ggcheckout.app/checkout/v5/dM4Goh08knIzrcKrq1hO" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="btn-primary py-2.5 px-6 text-sm"
+                      >
+                        Comprar Agora <ChevronRight size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="glass-card overflow-hidden group border-2 border-transparent hover:border-rosa-primary/30 transition-all flex flex-col md:flex-row">
+                  <div className="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                    <img 
+                      src="https://i.ibb.co/2JTKmRB/image.png" 
+                      alt="+100 Desafios Semanais De Dança Para Casa" 
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 md:w-2/3 flex flex-col">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-xl font-bold text-gray-800 leading-tight">+100 Desafios Semanais De Dança Para Casa</h4>
+                      <span className="bg-roxo-primary text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shrink-0 ml-2">Popular</span>
+                    </div>
+                    <p className="text-gray-500 text-sm mb-6 flex-1">Engaje seus alunos além da sala de aula com desafios divertidos para praticarem em casa com a família.</p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <div>
+                        <p className="text-[10px] text-gray-400 font-bold uppercase">Aproveite agora</p>
+                        <p className="text-2xl font-black text-roxo-primary leading-none">Oferta Especial</p>
+                      </div>
+                      <a 
+                        href="https://ggcheckout.app/checkout/v5/IGdM9kM7PYANRCHqYf0U" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="btn-primary py-2.5 px-6 text-sm bg-roxo-primary hover:bg-roxo-primary/90 shadow-roxo-primary/20"
+                      >
+                        Comprar Agora <ChevronRight size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="glass-card overflow-hidden group border-2 border-transparent hover:border-rosa-primary/30 transition-all flex flex-col md:flex-row">
+                  <div className="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                    <img 
+                      src="https://i.ibb.co/xtCcy1mg/f26c21b2-5459-4180-836c-c5bb229761e0-1777955115913.avif" 
+                      alt="+50 Planos de Aula Prontos de Dança Infantil" 
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 md:w-2/3 flex flex-col">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-xl font-bold text-gray-800 leading-tight">+50 Planos de Aula Prontos de Dança Infantil</h4>
+                      <span className="bg-amarelo-primary text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shrink-0 ml-2">Exclusivo</span>
+                    </div>
+                    <p className="text-gray-500 text-sm mb-6 flex-1">Economize tempo e garanta a qualidade das suas aulas com planos estruturados e prontos para aplicar.</p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <div>
+                        <p className="text-[10px] text-gray-400 font-bold uppercase">Aproveite agora</p>
+                        <p className="text-2xl font-black text-amarelo-primary leading-none">Oferta Especial</p>
+                      </div>
+                      <a 
+                        href="https://ggcheckout.app/checkout/v5/tIcIOV8Bv8frCXYE5T22" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="btn-primary py-2.5 px-6 text-sm bg-amarelo-primary hover:bg-amarelo-primary/90 shadow-amarelo-primary/20"
+                      >
+                        Comprar Agora <ChevronRight size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="glass-card overflow-hidden group border-2 border-transparent hover:border-rosa-primary/30 transition-all flex flex-col md:flex-row">
+                  <div className="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                    <img 
+                      src="https://i.ibb.co/21xmFHkb/c1c4d83d-9a17-4524-9c57-8558708f1ec7-1777955265337.avif" 
+                      alt="+300 Coreografias de Dança Infantil Prontas para Aplicar" 
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 md:w-2/3 flex flex-col">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-xl font-bold text-gray-800 leading-tight">+300 Coreografias de Dança Infantil Prontas para Aplicar</h4>
+                      <span className="bg-rosa-primary text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shrink-0 ml-2">Sucesso</span>
+                    </div>
+                    <p className="text-gray-500 text-sm mb-6 flex-1">Tenha em mãos as melhores coreografias para suas apresentações e festivais, tudo pronto para ensinar.</p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <div>
+                        <p className="text-[10px] text-gray-400 font-bold uppercase">Aproveite agora</p>
+                        <p className="text-2xl font-black text-rosa-primary leading-none">Oferta Especial</p>
+                      </div>
+                      <a 
+                        href="https://ggcheckout.app/checkout/v5/SYNcAAp5ewNEEpNViW6W" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="btn-primary py-2.5 px-6 text-sm"
+                      >
+                        Comprar Agora <ChevronRight size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           )}
