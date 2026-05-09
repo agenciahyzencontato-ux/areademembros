@@ -992,6 +992,38 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+
+                <div className="glass-card overflow-hidden group border-2 border-transparent hover:border-rosa-primary/30 transition-all flex flex-col md:flex-row">
+                  <div className="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                    <img 
+                      src="https://i.ibb.co/BH3VYTkW/488f22b5-6c66-4cc1-9a40-fe7f8ba99fb1-1777759548383.avif" 
+                      alt="Pack Gospel Kids - Dinâmicas e Coreografias Cristãs" 
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 md:w-2/3 flex flex-col">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-xl font-bold text-gray-800 leading-tight">Pack Gospel Kids - Dinâmicas e Coreografias Cristãs</h4>
+                      <span className="bg-roxo-primary text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shrink-0 ml-2">Gospel</span>
+                    </div>
+                    <p className="text-gray-500 text-sm mb-6 flex-1">Recursos exclusivos para o ministério infantil, com dinâmicas e coreografias cristãs que encantam e ensinam.</p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <div>
+                        <p className="text-[10px] text-gray-400 font-bold uppercase">Aproveite agora</p>
+                        <p className="text-2xl font-black text-roxo-primary leading-none">Oferta Especial</p>
+                      </div>
+                      <a 
+                        href="https://ggcheckout.app/checkout/v5/lB3DfROG5YE82JkJkRPJ" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="btn-primary py-2.5 px-6 text-sm bg-roxo-primary hover:bg-roxo-primary/90 shadow-roxo-primary/20"
+                      >
+                        Comprar Agora <ChevronRight size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </motion.div>
           )}
