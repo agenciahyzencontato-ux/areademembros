@@ -303,6 +303,96 @@ const PDFViewer = ({ dynamic, onClose, onComplete, isMobile }: { dynamic: Dynami
   );
 };
 
+const WhatsAppButton = () => (
+  <motion.a
+    href="https://wa.me/553799056159?text=Ol%C3%A1%21+Preciso+de+ajuda+na+%C3%81rea+de+Membros."
+    target="_blank"
+    rel="noopener noreferrer"
+    initial={{ scale: 0, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    className="fixed bottom-6 right-6 z-[90] bg-rosa-primary text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:bg-rosa-primary/90 transition-colors"
+    aria-label="Atendimento WhatsApp"
+  >
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.396.015 12.03c0 2.12.556 4.188 1.61 6.035L0 24l6.105-1.602a11.832 11.832 0 005.94 1.586h.005c6.634 0 12.03-5.396 12.033-12.03a11.812 11.812 0 00-3.535-8.415z"/>
+    </svg>
+  </motion.a>
+);
+
+const OfferPopup = ({ onClose, onNavigate }: { onClose: () => void, onNavigate: () => void }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
+    >
+      <motion.div
+        initial={{ scale: 0.9, y: 20 }}
+        animate={{ scale: 1, y: 0 }}
+        exit={{ scale: 0.9, y: 20 }}
+        className="bg-white rounded-[32px] overflow-hidden max-w-lg w-full shadow-2xl relative"
+      >
+        <button 
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 bg-gray-100 hover:bg-rosa-primary hover:text-white rounded-full transition-all z-10"
+        >
+          <X size={20} />
+        </button>
+
+        <div className="bg-gradient-to-br from-rosa-primary via-roxo-primary to-rosa-primary p-8 text-white text-center relative overflow-hidden">
+          <Sparkles />
+          <div className="relative z-10">
+            <div className="inline-flex p-3 bg-white/20 rounded-2xl mb-4 backdrop-blur-sm">
+              <ShoppingBag size={32} className="text-white" />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-black mb-2">Ofertas Exclusivas! 🎁</h3>
+            <p className="text-white/80 font-medium">Preparamos complementos especiais para acelerar seus resultados!</p>
+          </div>
+        </div>
+
+        <div className="p-6 space-y-4">
+          <div className="flex items-center gap-4 p-3 rounded-2xl bg-pink-50 border border-pink-100">
+             <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+               <img src="https://i.ibb.co/0Vp0zXFS/519f4d94-cd0b-4502-9c52-da1dad565f7c-1777954675236.avif" className="w-full h-full object-cover" alt="Balé" />
+             </div>
+             <div>
+               <h4 className="font-bold text-gray-800 text-sm">+300 Dinâmicas para Balé</h4>
+               <p className="text-xs text-gray-500">O material mais pedido pelas alunas!</p>
+             </div>
+          </div>
+          
+          <div className="flex items-center gap-4 p-3 rounded-2xl bg-purple-50 border border-purple-100">
+             <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+               <img src="https://i.ibb.co/2JTKmRB/image.png" className="w-full h-full object-cover" alt="Desafios" />
+             </div>
+             <div>
+               <h4 className="font-bold text-gray-800 text-sm">+100 Desafios Semanais</h4>
+               <p className="text-xs text-gray-500">Engaje seus alunos fora da sala de aula.</p>
+             </div>
+          </div>
+
+          <button 
+            onClick={() => {
+              onNavigate();
+              onClose();
+            }}
+            className="w-full btn-primary py-4 text-lg mt-4"
+          >
+            Ver Todas as Ofertas <ChevronRight size={20} />
+          </button>
+          
+          <p className="text-center text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-2">
+            Descontos válidos por tempo limitado
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const Certificate = ({ userName, completionDate }: { userName: string, completionDate: string }) => {
   const currentDate = new Date().toLocaleDateString('pt-BR');
 
@@ -398,6 +488,20 @@ export default function App() {
   const [selectedDynamic, setSelectedDynamic] = useState<Dynamic | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  const [isOfferPopupOpen, setIsOfferPopupOpen] = useState(false);
+
+  useEffect(() => {
+    if (user && activeTab === 'dashboard') {
+      const hasSeenPopup = localStorage.getItem('hasSeenOfferPopup');
+      if (!hasSeenPopup) {
+        const timer = setTimeout(() => {
+          setIsOfferPopupOpen(true);
+          localStorage.setItem('hasSeenOfferPopup', 'true');
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [user, activeTab]);
 
   useEffect(() => {
     // Check session on load
@@ -647,6 +751,7 @@ export default function App() {
             icon={ShoppingBag}
             label="Adicionais"
             active={activeTab === 'adicionais'}
+            showBadge={true}
             onClick={() => { setActiveTab('adicionais'); setIsSidebarOpen(false); }}
           />
         </nav>
@@ -812,6 +917,22 @@ export default function App() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
+              <motion.div
+                onClick={() => setActiveTab('adicionais')}
+                className="mb-8 p-4 bg-gradient-to-r from-rosa-primary/10 to-roxo-primary/10 rounded-2xl border-2 border-pink-200/50 flex items-center justify-between cursor-pointer group hover:border-rosa-primary/30 transition-all"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-white rounded-xl text-rosa-primary shadow-sm group-hover:scale-110 transition-transform">
+                    <PlusCircle size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800">Quer mais conteúdos exclusivos?</h4>
+                    <p className="text-sm text-gray-500">Confira nossos pacotes adicionais de dinâmicas e coreografias!</p>
+                  </div>
+                </div>
+                <ChevronRight className="text-rosa-primary group-hover:translate-x-1 transition-transform" />
+              </motion.div>
+
               <SectionTitle icon={BookOpen}>Biblioteca</SectionTitle>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {dynamics
@@ -847,6 +968,22 @@ export default function App() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
+              <motion.div
+                onClick={() => setActiveTab('adicionais')}
+                className="mb-8 p-4 bg-gradient-to-r from-roxo-primary/10 to-rosa-primary/10 rounded-2xl border-2 border-purple-200/50 flex items-center justify-between cursor-pointer group hover:border-purple-primary/30 transition-all"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-white rounded-xl text-roxo-primary shadow-sm group-hover:scale-110 transition-transform">
+                    <ShoppingBag size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800">Ofertas de Bônus Extras!</h4>
+                    <p className="text-sm text-gray-500">Adquira novos pacotes e leve suas aulas para o próximo nível.</p>
+                  </div>
+                </div>
+                <ChevronRight className="text-roxo-primary group-hover:translate-x-1 transition-transform" />
+              </motion.div>
+
               <SectionTitle icon={Gift}>Seus Bônus</SectionTitle>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {dynamics.filter(d => d.category === 'Bônus').map((bonus) => (
@@ -1041,18 +1178,31 @@ export default function App() {
           />
         )}
       </AnimatePresence>
+
+      {/* Offer Popup */}
+      <AnimatePresence>
+        {isOfferPopupOpen && (
+          <OfferPopup 
+            onClose={() => setIsOfferPopupOpen(false)} 
+            onNavigate={() => setActiveTab('adicionais')}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
     </div>
   );
 }
 
 // --- Sub-components ---
 
-const NavItem = ({ icon: Icon, label, active, disabled, isLocked, onClick }: { icon: any, label: string, active: boolean, disabled?: boolean, isLocked?: boolean, onClick: () => void }) => (
+const NavItem = ({ icon: Icon, label, active, disabled, isLocked, showBadge, onClick }: { icon: any, label: string, active: boolean, disabled?: boolean, isLocked?: boolean, showBadge?: boolean, onClick: () => void }) => (
   <button
     disabled={disabled}
     onClick={onClick}
     className={cn(
-      "w-full flex items-center gap-4 px-6 py-3.5 rounded-2xl font-bold transition-all",
+      "w-full flex items-center gap-4 px-6 py-3.5 rounded-2xl font-bold transition-all relative",
       active
         ? "bg-rosa-primary text-white shadow-lg shadow-rosa-primary/30"
         : "text-gray-400 hover:bg-pink-50 hover:text-rosa-primary",
@@ -1061,6 +1211,12 @@ const NavItem = ({ icon: Icon, label, active, disabled, isLocked, onClick }: { i
   >
     <Icon size={20} />
     <span className="text-sm md:text-base">{label}</span>
+    {showBadge && !active && (
+      <span className="absolute top-3 right-8 flex h-3 w-3">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rosa-primary opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-3 w-3 bg-rosa-primary border-2 border-white"></span>
+      </span>
+    )}
     {isLocked && <Lock size={16} className="ml-auto text-rosa-primary" />}
     {!isLocked && disabled && <Lock size={16} className="ml-auto opacity-50" />}
     {!disabled && active && <ChevronRight size={16} className="ml-auto" />}
